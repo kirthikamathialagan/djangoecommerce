@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block metadescription %}
+    we have varities of product available on mahadev shop
+{% endblock %}
+
+{% block title %}
+    search
+{% endblock %}
+
+{% block body %}
+<div>
+    <p class="text-center my_search"> you have searched for :<b>"{{query}}"</b></p>
+</div>
+<div class="container ">
+        <div class="row mx-auto">
+            {% for product in products %}
+        <div class="my_margin_bottom col-9 col-sm-12 col-md-4 col-lg-4">
+        <div class="card-text-center" style="width: 20rem;">
+            <a href="{{product.get_url}}"><img class="card-img-top my_image" src="{{product.image.url}}" alt="{{product.name}}" ></a>
+            <div class="card-body">
+                <h4>{{product.name}}</h4>
+                <p>{{product.price}}</p>
+            </div>
+        </div>
+    </div>
+            {% empty %}
+            <div class="row mx-auto">
+         <p class="text-center my_search"><b> 0 results found</b></p>
+    </div>
+    {% endfor %}
+</div>
+    </div>
+{% endblock %}
